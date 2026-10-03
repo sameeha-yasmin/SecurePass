@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101719">
+  <meta name="description" content="A local password strength estimate and generator.">
+  <title>SecurePass | Password Analyzer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="SecurePass home">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <span>SecurePass</span>
+    </a>
+    <p class="privacy-label"><span class="privacy-dot" aria-hidden="true"></span> Analysis stays in this browser</p>
+  </header>
+
+  <main class="page-shell">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">PASSWORD TOOLKIT <span aria-hidden="true">/</span> 01</p>
+      <h1 id="page-title">Make your next<br>password <span>stronger.</span></h1>
+      <p class="intro-copy">Check the basics, improve what is missing, or create a new password right here.</p>
+    </section>
+
+    <section class="analyzer-layout" aria-label="Password analyzer">
+      <article class="panel password-panel" aria-labelledby="password-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="section-index">01 / ANALYZE</p>
+            <h2 id="password-heading">Your password</h2>
+          </div>
+          <span class="local-tag">LOCAL ONLY</span>
+        </div>
+
+        <label class="field-label" for="password-input">Password</label>
+        <div class="password-field">
+          <input id="password-input" name="password" type="password" autocomplete="new-password" autocapitalize="off" spellcheck="false" placeholder="Type or generate a password" aria-describedby="password-hint">
+          <button class="visibility-button" id="toggle-visibility" type="button" aria-label="Show password" aria-pressed="false">Show</button>
+        </div>
+        <p class="field-hint" id="password-hint">Your password is analyzed only on this page. It is never saved or sent.</p>
+
+        <div class="action-row">
+          <button class="button button-primary" id="generate-button" type="button"><span aria-hidden="true">+</span> Generate strong password</button>
+          <button class="button button-secondary" id="copy-button" type="button" disabled>Copy password</button>
+          <button class="button button-quiet" id="reset-button" type="button">Reset</button>
+        </div>
+        <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+
+        <div class="strength-summary">
+          <div class="strength-line">
+            <h3>Estimated strength</h3>
+            <span class="strength-badge" id="strength-label" data-strength="none">Not rated</span>
+          </div>
+          <div class="progress-track" id="strength-progress" role="progressbar" aria-label="Estimated password strength" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0 out of 100">
+            <span class="progress-fill" id="progress-fill"></span>
+          </div>
+          <p class="estimate-note">A basic estimate, not a test of whether a password can be hacked.</p>
+        </div>
+
+        <div class="requirements-block">
+          <h3>Checklist</h3>
+          <ul class="requirements-list">
+            <li class="requirement" id="requirement-length"><span class="requirement-icon" aria-hidden="true">&#10003;</span><span>At least 8 characters</span></li>
+            <li class="requirement" id="requirement-uppercase"><span class="requirement-icon" aria-hidden="true">&#10003;</span><span>Uppercase letter</span></li>
+            <li class="requirement" id="requirement-lowercase"><span class="requirement-icon" aria-hidden="true">&#10003;</span><span>Lowercase letter</span></li>
+            <li class="requirement" id="requirement-number"><span class="requirement-icon" aria-hidden="true">&#10003;</span><span>Number</span></li>
+            <li class="requirement" id="requirement-special"><span class="requirement-icon" aria-hidden="true">&#10003;</span><span>Special character</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="panel insight-panel" aria-labelledby="insight-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="section-index">02 / INSIGHTS</p>
+            <h2 id="insight-heading">Score &amp; suggestions</h2>
+          </div>
+          <span class="score-ring" aria-hidden="true">SP</span>
+        </div>
+
+        <div class="score-display">
+          <p class="score-caption">SECURITY SCORE</p>
+          <p class="score-value"><span id="score-value">0</span><span class="score-total">/ 100</span></p>
+          <p class="score-description" id="score-description">Add a password to begin.</p>
+        </div>
+
+        <div class="suggestions-block">
+          <h3>Ways to improve</h3>
+          <ul class="suggestions-list" id="suggestions-list" aria-live="polite">
+            <li>Enter a password to see suggestions.</li>
+          </ul>
+        </div>
+
+        <div class="privacy-note">
+          <span class="privacy-note-mark" aria-hidden="true">i</span>
+          <p>This page does not store your password or send it to a server. Generated passwords are shown only in the input above.</p>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="page-footer">
+      <span>SECUREPASS <span aria-hidden="true">/</span> PRIVATE BY DESIGN</span>
+      <span>Strength checks are guidelines, not guarantees.</span>
+    </footer>
+  </main>
+</body>
+</html>
